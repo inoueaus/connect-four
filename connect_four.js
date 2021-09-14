@@ -49,7 +49,6 @@ function checkForWinner() {
             
         }
     }
-
     function rowColumnChecker(obj) {
         var value = obj.getAttribute('value');
         if (value === prev && count === 2 && value !== "empty") {
