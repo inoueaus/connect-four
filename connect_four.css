@@ -15,8 +15,8 @@ h3 {
 .board button {
     height: 10vw;
     width: 10vw;
-    max-height: 110px;
-    max-width: 110px;
+    max-height: 85px;
+    max-width: 85px;
     border-radius: 50%;
     border-width: 2px;
     border-style: solid;
