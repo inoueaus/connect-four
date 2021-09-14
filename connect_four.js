@@ -33,7 +33,7 @@ function changePlayer(params) {
     playerDisplay.text("Current Player: " + currentPlayer);
 }
 
-function checkForWinner() {
+function checkForWinner(values) {
     //internal functions
     function diagRowChecker(row_i) {
         for (let col_i = 0; col_i < 4; col_i++) {
@@ -61,7 +61,6 @@ function checkForWinner() {
         }
     }
 
-    var values = generateButtonArray();
     //row check
     var prev = "";
     var count = 0;
@@ -79,7 +78,6 @@ function checkForWinner() {
         });
     }
     //diag check
-    values.reverse();
     for (let row_i = 0; row_i < 2; row_i++) {
         diagRowChecker(row_i)
     }
