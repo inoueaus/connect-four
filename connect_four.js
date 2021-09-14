@@ -78,7 +78,7 @@ function checkForWinner(values) {
         });
     }
     //diag check
-    for (let row_i = 0; row_i < 2; row_i++) {
+    for (let row_i = 0; row_i < 3; row_i++) {
         diagRowChecker(row_i)
     }
     //reverse all rows to check opposite diag
@@ -86,7 +86,7 @@ function checkForWinner(values) {
         row.reverse();
     });
     //run again to check opposite diags
-    for (let row_i = 0; row_i < 2; row_i++) {
+    for (let row_i = 0; row_i < 3; row_i++) {
         diagRowChecker(row_i)
     }
     //update if winner
