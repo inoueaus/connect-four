@@ -80,7 +80,6 @@ function checkForWinner() {
                 count = 0;
             }
         });
-        console.log("column " + i + " count " + count);
     }
     
     //diag check
@@ -137,6 +136,6 @@ var currentPlayer = 'blue';
 var playerDisplay = $('#player-display');
 playerDisplay.text("Current Player: " + currentPlayer);
 assignIds();
-console.log(generateButtonArray())
+
 
 
