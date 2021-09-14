@@ -34,6 +34,7 @@ function changePlayer(params) {
 }
 
 function checkForWinner() {
+    //internal functions
     function diagRowChecker(row_i) {
         for (let col_i = 0; col_i < 4; col_i++) {
             var start = values[row_i][col_i].value;
@@ -48,21 +49,26 @@ function checkForWinner() {
             
         }
     }
+
+    function rowColumnChecker(obj) {
+        var value = obj.getAttribute('value');
+        if (value === prev && count === 2 && value !== "empty") {
+            winner = value;
+        } else if (value === prev && value !== "empty") {
+            count++;
+        } else {
+            prev = value;
+            count = 0;
+        }
+    }
+
     var values = generateButtonArray();
     //row check
     var prev = "";
     var count = 0;
     values.forEach(row => {
         row.forEach(button =>{
-            var value = button.getAttribute('value');
-            if (value === prev && count === 2 && value !== "empty") {
-                winner = value;
-            } else if (value === prev && value !== "empty") {
-                count++;
-            } else {
-                prev = value;
-                count = 0;
-            }
+            rowColumnChecker(button);
         });
     });
     //column check
@@ -70,18 +76,9 @@ function checkForWinner() {
     count = 0;
     for (let i = 0; i < 7; i++) {
         values.forEach(row => {
-            var value = row[i].getAttribute('value');
-            if (value === prev && count === 2 && value !== "empty") {
-                winner = value;
-            } else if (value === prev && value !== "empty") {
-                count++;
-            } else {
-                prev = value;
-                count = 0;
-            }
+            rowColumnChecker(row[i]);
         });
     }
-    
     //diag check
     values.reverse();
     for (let row_i = 0; row_i < 2; row_i++) {
@@ -95,8 +92,6 @@ function checkForWinner() {
     for (let row_i = 0; row_i < 2; row_i++) {
         diagRowChecker(row_i)
     }
-    
-
     //update if winner
     if (winner) {
         playerDisplay.text(winner + " wins!");
